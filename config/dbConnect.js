@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const dbConnect = async()=>{
     try{
-        await mongoose.connect("mongodb+srv://abdallaosman643:BWoTSlzpalBdut13@cluster0.8ok12of.mongodb.net/"
+        await mongoose.connect("add unique DB connect Key Here"
         );
         console.log("Db connected Succsessfully");
     }catch (errror){
