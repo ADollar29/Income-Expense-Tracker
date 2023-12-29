@@ -1,3 +1,5 @@
+const Account = require("../../model/Account");
+
 //create
 const createAccountCtrl = async (req, res) => {
     try {
@@ -10,7 +12,8 @@ const createAccountCtrl = async (req, res) => {
   //all
   const getAccountsCtrl = async (req, res) => {
     try {
-      res.json({ msg: "get account route" });
+      const accounts = await Account.find().populate("transactions");
+      res.json(accounts);
     } catch (error) {
       res.json(error);
     }
