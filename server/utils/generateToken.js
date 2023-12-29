@@ -10,7 +10,7 @@
 const jwt = require('jsonwebtoken');
 
 const generateToken = id=>{
-    return jwt.sign({id}, 'anykey', {expiresIn: '10d'}) // we can asign it any user propery like email etc but the user id is unique
+    return jwt.sign({id}, "anykey", {expiresIn: '10d'}) // we can asign it any user propery like email etc but the user id is unique
     //expires in tells us when the user token will expire which then our server will force user to log back in in our case it takes 10 days
 };
 

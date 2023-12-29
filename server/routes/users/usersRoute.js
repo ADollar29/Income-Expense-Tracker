@@ -15,7 +15,7 @@ usersRoute.post("/register", registerUserCtrl);
 //POST/api/v1/users/login
 usersRoute.post("/login", userLoginCtrl);
 //GET/api/v1/users/profile/:id
-usersRoute.get("/profile/:id", userProfileCtrl);
+usersRoute.get("/profile", userProfileCtrl);
 //DELETE/api/v1/users/:id
 usersRoute.delete("/:id",deleteUserCtrl);
 //PUT/api/v1/users/:id
