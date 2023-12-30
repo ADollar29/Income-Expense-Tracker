@@ -43,7 +43,7 @@ const getAccountsCtrl = async (req, res) => {
 //single
 const getAccountCtrl = async (req, res, next) => {
   try {
-    //find the id from params
+    //find the id from parameters
     const { id } = req.params;
     const account = await Account.findById(id).populate("transactions");
     res.json({
