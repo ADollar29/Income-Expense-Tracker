@@ -34,38 +34,57 @@ const createTransactionCtrl = async (req, res, next) => {
   };
   
   //all
-  const getTransactionsCtrl = async (req, res) => {
+  const getTransactionsCtrl = async (req, res, next) => {
     try {
-      res.json({ msg: "all route" });
+      const trans = await Transaction.find();
+      res.status(200).json({
+        status : "success",
+        data: trans,
+      })
     } catch (error) {
-      res.json(error);
+      next(new AppErr(error.message, 500));
     }
   };
   
   //single
   const getTransactionCtrl = async (req, res) => {
     try {
-      res.json({ msg: "get transaction route" });
+      const {id} = req.params;
+      const tran = await Transaction.findById(id);
+      res.json({status: "success", data: tran});
     } catch (error) {
-      res.json(error);
+      next(new AppErr(error.message, 500));
     }
   };
   
   //delete
-  const deleteTransactionCtrl = async (req, res) => {
+  const deleteTransactionCtrl = async (req, res, next) => {
     try {
-      res.json({ msg: "delete route" });
+      const {id} = req.params;
+      await Transaction.findByIdAndDelete(id)
+      res.json({
+        status: "success",
+        data: null,
+      });
     } catch (error) {
-      res.json(error);
+      next(new AppErr(error.message, 500));
     }
   };
   
   //update
-  const updateTransactionCtrl = async (req, res) => {
+  const updateTransactionCtrl = async (req, res, next) => {
     try {
-      res.json({ msg: "update route" });
+      const {id} = req.params;
+      const tran = await Transaction.findByIdAndUpdate(id, req.body, {
+        new: true, 
+        runValidators: true,
+      });
+      res.json({
+        status: "success",
+        runValidators: tran,
+      });
     } catch (error) {
-      res.json(error);
+      next(new AppErr(error.message, 500));
     }
   };
   
