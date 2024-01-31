@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 //user schema
-
 const transactionSchema = new mongoose.Schema(
     {
     name:{
@@ -10,7 +9,7 @@ const transactionSchema = new mongoose.Schema(
     },
     transactionType: {
         type: String,
-        enum:["Income"," Expenses"],
+        enum:["Income","Expenses"],
         required: true,
     },
 
@@ -34,6 +33,7 @@ const transactionSchema = new mongoose.Schema(
             "Groceries",
             "Bills",
             "Uncategorized",
+            "Building",
         ],
         required: true,
     },
@@ -44,6 +44,7 @@ const transactionSchema = new mongoose.Schema(
     createdBy:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: true,
     },
     date: {
         type: Date,
